@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login dan Signup</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="wrapper">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="#">PMI</a>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active"><a class="nav-link" href="#">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Informasi Layanan</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Cek Jadwal</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="content">
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-6">
+
+          <div class="form-container">
+            <!-- Login Form -->
+            <div id="login-form">
+              <h3>Login</h3>
+              <form action="">
+                <div class="mb-3">
+                  <label for="login-email" class="form-label">Email</label>
+                  <input type="email" class="form-control" id="login-email">
+                </div>
+                <div class="mb-3">
+                  <label for="login-password" class="form-label">Password</label>
+                  <input type="password" class="form-control" id="login-password">
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+              </form>
+              <p>Don't have an account? <a href="#" id="signup-link">Sign up now</a></p>
+            </div>
+
+            <!-- Signup Form -->
+            <div id="signup-form" style="display: none;">
+              <h3>Sign Up</h3>
+              <form action="">
+                <div class="mb-3">
+                  <label for="signup-email" class="form-label">Email</label>
+                  <input type="email" class="form-control" id="signup-email">
+                </div>
+                <div class="mb-3">
+                  <label for="signup-password" class="form-label">Password</label>
+                  <input type="password" class="form-control" id="signup-password">
+                </div>
+                <div class="mb-3">
+                  <label for="signup-confirm-password" class="form-label">Confirm Password</label>
+                  <input type="password" class="form-control" id="signup-confirm-password">
+                </div>
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+              </form>
+              <p>Already have an account? <a href="#" id="login-link">Login now</a></p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Footer -->
+  <footer>
+    <p>© 2024 Palang Merah Indonesia - Semua Hak Dilindungi</p>
+  </footer>
+</div>
+
+<script>
+document.getElementById('signup-link').addEventListener('click', function() {
+  document.getElementById('login-form').style.display = 'none';
+  document.getElementById('signup-form').style.display = 'block';
+});
+
+document.getElementById('login-link').addEventListener('click', function() {
+  document.getElementById('signup-form').style.display = 'none';
+  document.getElementById('login-form').style.display = 'block';
+});
+</script>
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
