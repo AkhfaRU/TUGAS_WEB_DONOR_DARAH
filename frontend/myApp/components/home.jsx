@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
-import LoginForm from './components/LoginForm';
-import SignupForm from './components/SignupForm';
-import InformasiLayanan from './components/InformasiLayanan';
+import LoginForm from './LoginForm';
+import SignupForm from './SignupForm';
+import InformasiLayanan from './InformasiLayanan';
 import './home.css'; //kalau ada css
 
 const HomePage = () => {
