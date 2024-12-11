@@ -1,12 +1,14 @@
-import React from 'react';
+import React from "react";
 
-function Sukses() {
+const Sukses = () => {
   return (
-    <div>
+    <div className="container">
       <h1>Terima Kasih</h1>
       <p>Pendaftaran Telah Berhasil</p>
+      <button>
+        <a href="/form">Kembali</a>
+      </button>
     </div>
   );
-}
-
+};
 export default Sukses;
