@@ -75,3 +75,12 @@
     font-size: 16px;
   }
 }
+
+/* Mengubah warna teks dropdown */
+.navbar .dropdown-menu a {
+  color: black !important;  /* Ganti dengan warna yang diinginkan */
+}
+
+.navbar .dropdown-menu a:hover {
+  color: #d9534f !important;  /* Ganti dengan warna hover yang diinginkan */
+}

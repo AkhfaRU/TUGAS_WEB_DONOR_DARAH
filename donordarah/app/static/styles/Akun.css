@@ -13,6 +13,26 @@ form {
     align-items: center;
 }
 
+.form-container {
+    background-color: rgba(255, 255, 255, 0.9); /* Warna putih dengan transparansi 90% */
+    border-radius: 10px; /* Untuk sudut melengkung */
+    padding: 20px; /* Spasi dalam form */
+    width: 400px; /* Atur lebar */
+    margin: 0 auto; /* Tengah-tengah */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Tambahkan bayangan */
+}
+
+.form-control {
+    font-weight: bold; /* Membuat teks lebih tebal */
+    color: #000000;    /* Teks hitam pekat */
+    font-size: 16px;   /* Ukuran teks */
+}
+.form-control::placeholder {
+    color: #555555; /* Placeholder lebih gelap */
+    font-weight: normal; /* Placeholder tidak terlalu tebal */
+}
+
+
 h2 {
     display: block;
     color: #333;
