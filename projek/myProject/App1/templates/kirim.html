@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To WhatsApp</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="{% static 'kirim.css' %}">
+</head>
+
+<body>
+
+    <h1 style="text-align: center;">Kirim Pesan Ke WhatsApp</h1>
+    <form action="{% url 'kirim' %}" method="POST">
+        {% csrf_token %}
+        <input type="text" name="nama" placeholder="Masukan Nama Anda" required />
+        <input type="text" name="pesan" placeholder="Ketik Pesan" required />
+        <button type="submit">Kirim Pesan</button>
+    </form>
+
+</body>
+
+</html>

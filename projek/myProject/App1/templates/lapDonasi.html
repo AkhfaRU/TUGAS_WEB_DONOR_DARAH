@@ -1,0 +1,1016 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1138, maximum-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="https://animaproject.s3.amazonaws.com/home/favicon.png"
+    />
+    <meta name="og:type" content="website" />
+    <meta name="twitter:card" content="photo" />
+    <script id="anima-load-script" src="load.js"></script>
+    <script id="anima-hotspots-script" src="hotspots.js"></script>
+    <script id="anima-overrides-script" src="overrides.js"></script>
+    <script src="https://animaapp.s3.amazonaws.com/js/timeline.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <style>
+      @import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+
+      @import url("https://fonts.googleapis.com/css?family=Poppins:300,700,400");
+
+      /* The following line is used to measure usage of this code. You can remove it if you want. */
+      @import url("https://px.animaapp.com/675ef64d4571e83003076d89.675ef64e4571e83003076d8c.kmOeX9R.hch.png");
+
+      .screen textarea:focus,
+      .screen input:focus {
+        outline: none;
+      }
+
+      .screen * {
+        -webkit-font-smoothing: antialiased;
+        box-sizing: border-box;
+      }
+
+      .screen div {
+        -webkit-text-size-adjust: none;
+      }
+
+      .component-wrapper a {
+        display: contents;
+        pointer-events: auto;
+        text-decoration: none;
+      }
+
+      .component-wrapper * {
+        -webkit-font-smoothing: antialiased;
+        box-sizing: border-box;
+        pointer-events: none;
+      }
+
+      .component-wrapper a *,
+      .component-wrapper input,
+      .component-wrapper video,
+      .component-wrapper iframe {
+        pointer-events: auto;
+      }
+
+      .component-wrapper.not-ready,
+      .component-wrapper.not-ready * {
+        visibility: hidden !important;
+      }
+
+      .screen a {
+        display: contents;
+        text-decoration: none;
+      }
+
+      .full-width-a {
+        width: 100%;
+      }
+
+      .full-height-a {
+        height: 100%;
+      }
+
+      .container-center-vertical {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+        pointer-events: none;
+      }
+
+      .container-center-vertical > * {
+        flex-shrink: 0;
+        pointer-events: auto;
+      }
+
+      .container-center-horizontal {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        pointer-events: none;
+        width: 100%;
+      }
+
+      .container-center-horizontal > * {
+        flex-shrink: 0;
+        pointer-events: auto;
+      }
+
+      .auto-animated div {
+        --z-index: -1;
+        opacity: 0;
+        position: absolute;
+      }
+
+      .auto-animated input {
+        --z-index: -1;
+        opacity: 0;
+        position: absolute;
+      }
+
+      .auto-animated .container-center-vertical,
+      .auto-animated .container-center-horizontal {
+        opacity: 1;
+      }
+
+      .overlay-base {
+        display: none;
+        height: 100%;
+        opacity: 0;
+        position: fixed;
+        top: 0;
+        width: 100%;
+      }
+
+      .overlay-base.animate-appear {
+        align-items: center;
+        animation: reveal 0.3s ease-in-out 1 normal forwards;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        opacity: 0;
+      }
+
+      .overlay-base.animate-disappear {
+        animation: reveal 0.3s ease-in-out 1 reverse forwards;
+        display: block;
+        opacity: 1;
+        pointer-events: none;
+      }
+
+      .overlay-base.animate-disappear * {
+        pointer-events: none;
+      }
+
+      @keyframes reveal {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .animate-nodelay {
+        animation-delay: 0s;
+      }
+
+      .align-self-flex-start {
+        align-self: flex-start;
+      }
+
+      .align-self-flex-end {
+        align-self: flex-end;
+      }
+
+      .align-self-flex-center {
+        align-self: flex-center;
+      }
+
+      .valign-text-middle {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .valign-text-bottom {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+      }
+
+      input:focus {
+        outline: none;
+      }
+
+      .listeners-active,
+      .listeners-active * {
+        pointer-events: auto;
+      }
+
+      .hidden,
+      .hidden * {
+        pointer-events: none;
+        visibility: hidden;
+      }
+
+      .smart-layers-pointers,
+      .smart-layers-pointers * {
+        pointer-events: auto;
+        visibility: visible;
+      }
+
+      .listeners-active-click,
+      .listeners-active-click * {
+        cursor: pointer;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      :root {
+        --alto: #d9d9d9;
+        --black: #000000;
+        --red: #f20000;
+        --romance: #fffdfd;
+        --white: #ffffff;
+
+        --font-size-l: 24px;
+        --font-size-m: 13px;
+        --font-size-s: 12px;
+        --font-size-xl: 64px;
+        --font-size-xs: 7px;
+
+        --font-family-poppins: "Poppins", Helvetica;
+      }
+      .poppins-bold-black-13px {
+        color: var(--black);
+        font-family: var(--font-family-poppins);
+        font-size: var(--font-size-m);
+        font-style: normal;
+        font-weight: 700;
+      }
+
+      .poppins-light-black-7px {
+        color: var(--black);
+        font-family: var(--font-family-poppins);
+        font-size: var(--font-size-xs);
+        font-style: normal;
+        font-weight: 300;
+      }
+
+      .poppins-normal-black-13px {
+        color: var(--black);
+        font-family: var(--font-family-poppins);
+        font-size: var(--font-size-m);
+        font-style: normal;
+        font-weight: 400;
+      }
+
+      .poppins-bold-red-13px {
+        color: var(--red);
+        font-family: var(--font-family-poppins);
+        font-size: var(--font-size-m);
+        font-style: normal;
+        font-weight: 700;
+      }
+
+      /* screen - laporan-donasi */
+
+      .laporan-donasi {
+        background-color: #ffffff99;
+        height: 700px;
+        overflow: hidden;
+        overflow-x: hidden;
+        position: relative;
+        width: 1138px;
+      }
+
+      .laporan-donasi .group-190-JfkSi1 {
+        background-color: transparent;
+        height: 85px;
+        left: -5px;
+        position: absolute;
+        top: 0px;
+        width: 1147px;
+      }
+
+      .laporan-donasi .group-151-6oVJYh {
+        background-color: transparent;
+        height: 85px;
+        left: 0px;
+        position: relative;
+        top: 0px;
+        width: 1151px;
+      }
+
+      .laporan-donasi .rectangle-93-ExYDWb {
+        background-color: #7f0000;
+        height: 81px;
+        left: 0px;
+        position: absolute;
+        top: 4px;
+        width: 1147px;
+      }
+
+      .laporan-donasi .x41df75da60d528780cc24321bf340b61-1-ExYDWb {
+        background-color: transparent;
+        height: 76px;
+        left: 30px;
+        position: absolute;
+        top: 0px;
+        width: 74px;
+      }
+
+      .laporan-donasi .palang-merah-indonesia-ExYDWb {
+        background-color: transparent;
+        color: var(--white);
+        font-family: var(--font-family-poppins);
+        font-size: var(--font-size-s);
+        font-style: normal;
+        font-weight: 700;
+        height: 59px;
+        left: 103px;
+        letter-spacing: 0px;
+        line-height: 15px;
+        position: absolute;
+        text-align: left;
+        top: 15px;
+        width: 73px;
+      }
+
+      .laporan-donasi .provinsi-jawa-barat-kota-bandung-ExYDWb {
+        background-color: transparent;
+        color: var(--white);
+        font-family: var(--font-family-poppins);
+        font-size: var(--font-size-s);
+        font-style: normal;
+        font-weight: 700;
+        height: 54px;
+        left: 194px;
+        letter-spacing: 0px;
+        line-height: 15px;
+        position: absolute;
+        text-align: left;
+        top: 16px;
+        width: 90px;
+      }
+
+      .laporan-donasi .rectangle-97-ExYDWb {
+        background-color: var(--white);
+        height: 48px;
+        left: 184px;
+        position: absolute;
+        top: 19px;
+        width: 2px;
+      }
+
+      .laporan-donasi .group-148-ExYDWb {
+        background-color: transparent;
+        height: 38px;
+        left: 443px;
+        position: absolute;
+        top: 28px;
+        width: 79px;
+      }
+
+      .laporan-donasi .home-2qsXWi {
+        background-color: transparent;
+        color: var(--white);
+        font-family: var(--font-family-poppins);
+        font-size: var(--font-size-l);
+        font-style: normal;
+        font-weight: 700;
+        height: 38px;
+        left: 0px;
+        letter-spacing: 0px;
+        line-height: normal;
+        position: absolute;
+        text-align: center;
+        top: 0px;
+        width: 77px;
+      }
+
+      .laporan-donasi .group-149-ExYDWb {
+        background-color: transparent;
+        height: 38px;
+        left: 594px;
+        position: absolute;
+        top: 28px;
+        width: 252px;
+      }
+
+      .laporan-donasi .vector-N6Klxa {
+        background-color: transparent;
+        height: 7px;
+        left: 240px;
+        position: absolute;
+        top: 16px;
+        width: 10px;
+      }
+
+      .laporan-donasi .informasi-layanan-N6Klxa {
+        background-color: transparent;
+        color: var(--white);
+        font-family: var(--font-family-poppins);
+        font-size: var(--font-size-l);
+        font-style: normal;
+        font-weight: 700;
+        height: 38px;
+        left: 0px;
+        letter-spacing: 0px;
+        line-height: normal;
+        position: absolute;
+        text-align: center;
+        top: 0px;
+        width: 238px;
+      }
+
+      .laporan-donasi .rectangle-114-JfkSi1 {
+        background-color: #640d14;
+        border-radius: 8px;
+        height: 196px;
+        left: -5px;
+        position: absolute;
+        top: 101px;
+        width: 1143px;
+      }
+
+      .laporan-donasi .title-JfkSi1 {
+        background-color: transparent;
+        color: #fffafa;
+        font-family: var(--font-family-poppins);
+        font-size: var(--font-size-xl);
+        font-style: normal;
+        font-weight: 700;
+        height: 111px;
+        left: 19px;
+        letter-spacing: 0px;
+        line-height: 100px;
+        position: absolute;
+        text-align: center;
+        top: 142px;
+        white-space: nowrap;
+        width: 594px;
+      }
+
+      .laporan-donasi .laporan-tahunan-JfkSi1 {
+        background-color: transparent;
+        color: #fffafa;
+        font-family: var(--font-family-poppins);
+        font-size: var(--font-size-xl);
+        font-style: normal;
+        font-weight: 700;
+        height: 111px;
+        left: 19px;
+        letter-spacing: 0px;
+        line-height: 100px;
+        position: absolute;
+        text-align: center;
+        top: 142px;
+        white-space: nowrap;
+        width: 594px;
+      }
+
+      .laporan-donasi .group-77-JfkSi1 {
+        background-color: transparent;
+        height: 139px;
+        left: 958px;
+        position: absolute;
+        top: 129px;
+        width: 150px;
+      }
+
+      .laporan-donasi .png-transparent-bloo-PKp3Ic {
+        background-color: transparent;
+        height: 96px;
+        left: 26px;
+        object-fit: cover;
+        position: absolute;
+        top: 0px;
+        width: 84px;
+      }
+
+      .laporan-donasi .pngtree-logo-palang-PKp3Ic {
+        background-color: transparent;
+        height: 54px;
+        left: 0px;
+        position: absolute;
+        top: 85px;
+        width: 150px;
+      }
+
+      .laporan-donasi .line-1-JfkSi1 {
+        background-color: transparent;
+        height: 1px;
+        left: 21px;
+        object-fit: cover;
+        position: absolute;
+        top: 349px;
+        width: 1054px;
+      }
+
+      .laporan-donasi .rectangle-213-JfkSi1 {
+        background-color: var(--alto);
+        height: 52px;
+        left: 25px;
+        position: absolute;
+        top: 414px;
+        width: 1050px;
+      }
+
+      .laporan-donasi .rectangle-214-JfkSi1 {
+        background-color: var(--alto);
+        height: 52px;
+        left: 25px;
+        position: absolute;
+        top: 414px;
+        width: 1050px;
+      }
+
+      .laporan-donasi .rectangle-215-JfkSi1 {
+        background-color: var(--alto);
+        height: 52px;
+        left: 25px;
+        position: absolute;
+        top: 414px;
+        width: 1050px;
+      }
+
+      .laporan-donasi .nama-file-JfkSi1 {
+        background-color: transparent;
+        color: var(--black);
+        font-family: var(--font-family-poppins);
+        font-size: var(--font-size-l);
+        font-style: normal;
+        font-weight: 700;
+        height: 36px;
+        left: 25px;
+        letter-spacing: 0px;
+        line-height: normal;
+        position: absolute;
+        text-align: center;
+        top: 357px;
+        width: auto;
+      }
+
+      .laporan-donasi .pdf1-1-JfkSi1 {
+        background-color: transparent;
+        height: 29px;
+        left: 45px;
+        object-fit: cover;
+        position: absolute;
+        top: 425px;
+        width: 22px;
+      }
+
+      .laporan-donasi .laporan-kegiatan-don-JfkSi1 {
+        top: 417px;
+      }
+
+      .laporan-donasi .x174-mb-JfkSi1 {
+        background-color: transparent;
+        height: 19px;
+        left: 35px;
+        letter-spacing: 0px;
+        line-height: normal;
+        position: absolute;
+        text-align: center;
+        top: 449px;
+        width: 43px;
+      }
+
+      .laporan-donasi .x12122022-JfkSi1 {
+        background-color: transparent;
+        height: 20px;
+        left: 741px;
+        letter-spacing: 0px;
+        line-height: normal;
+        position: absolute;
+        text-align: center;
+        top: 429px;
+        width: auto;
+      }
+
+      .laporan-donasi .group-107-JfkSi1 {
+        background-color: transparent;
+        height: 32px;
+        left: 921px;
+        position: absolute;
+        top: 424px;
+        width: 155px;
+      }
+
+      .laporan-donasi .download-image1-1-JfkSi1 {
+        left: 934px;
+        top: 431px;
+      }
+
+      .laporan-donasi .rectangle-216-JfkSi1 {
+        background-color: var(--alto);
+        height: 52px;
+        left: 25px;
+        position: absolute;
+        top: 477px;
+        width: 1050px;
+      }
+
+      .laporan-donasi .x254-mb-JfkSi1 {
+        background-color: transparent;
+        height: 19px;
+        left: 35px;
+        letter-spacing: 0px;
+        line-height: normal;
+        position: absolute;
+        text-align: center;
+        top: 512px;
+        width: 43px;
+      }
+
+      .laporan-donasi .rectangle-217-JfkSi1 {
+        background-color: var(--alto);
+        height: 52px;
+        left: 25px;
+        position: absolute;
+        top: 541px;
+        width: 1050px;
+      }
+
+      .laporan-donasi .rectangle-218-JfkSi1 {
+        background-color: var(--alto);
+        height: 52px;
+        left: 25px;
+        position: absolute;
+        top: 541px;
+        width: 1050px;
+      }
+
+      .laporan-donasi .x712-mb-JfkSi1 {
+        background-color: transparent;
+        height: 19px;
+        left: 35px;
+        letter-spacing: 0px;
+        line-height: normal;
+        position: absolute;
+        text-align: center;
+        top: 577px;
+        width: 43px;
+      }
+
+      .laporan-donasi .group-192-JfkSi1 {
+        background-color: transparent;
+        height: 32px;
+        left: 921px;
+        position: absolute;
+        top: 546px;
+        width: 155px;
+      }
+
+      .laporan-donasi .download-image1-1-ElMYcF {
+        left: 14px;
+        top: 6px;
+      }
+
+      .laporan-donasi .x12122024-JfkSi1 {
+        background-color: transparent;
+        height: 20px;
+        left: 741px;
+        letter-spacing: 0px;
+        line-height: normal;
+        position: absolute;
+        text-align: center;
+        top: 551px;
+        width: auto;
+      }
+
+      .laporan-donasi .laporan-kegiatan-don-GJoZdp {
+        top: 548px;
+      }
+
+      .laporan-donasi .pdf1-3-JfkSi1 {
+        background-color: transparent;
+        height: 29px;
+        left: 45px;
+        object-fit: cover;
+        position: absolute;
+        top: 552px;
+        width: 22px;
+      }
+
+      .laporan-donasi .group-191-JfkSi1 {
+        background-color: transparent;
+        height: 32px;
+        left: 921px;
+        position: absolute;
+        top: 484px;
+        width: 155px;
+      }
+
+      .laporan-donasi .download-image1-1-D8xJh4 {
+        left: 14px;
+        top: 6px;
+      }
+
+      .laporan-donasi .x12122023-JfkSi1 {
+        background-color: transparent;
+        height: 20px;
+        left: 741px;
+        letter-spacing: 0px;
+        line-height: normal;
+        position: absolute;
+        text-align: center;
+        top: 483px;
+        width: auto;
+      }
+
+      .laporan-donasi .laporan-kegiatan-don-i8sZuW {
+        top: 417px;
+      }
+
+      .laporan-donasi .laporan-kegiatan-don-GPfpY0 {
+        top: 417px;
+      }
+
+      .laporan-donasi .laporan-kegiatan-don-Fxtu77 {
+        top: 417px;
+      }
+
+      .laporan-donasi .laporan-kegiatan-don-P31zFO {
+        top: 480px;
+      }
+
+      .laporan-donasi .pdf1-2-JfkSi1 {
+        background-color: transparent;
+        height: 29px;
+        left: 45px;
+        object-fit: cover;
+        position: absolute;
+        top: 489px;
+        width: 22px;
+      }
+
+      .laporan-donasi .download {
+        background-color: transparent;
+        height: 18px;
+        left: 0px;
+        letter-spacing: 0px;
+        line-height: 35px;
+        position: absolute;
+        text-align: center;
+        top: 6px;
+        white-space: nowrap;
+        width: 152px;
+      }
+
+      .laporan-donasi .download-image1-1 {
+        background-color: transparent;
+        height: 18px;
+        object-fit: cover;
+        position: absolute;
+        width: 17px;
+      }
+
+      .laporan-donasi .laporan-kegiatan-don {
+        background-color: transparent;
+        height: 36px;
+        left: 39px;
+        letter-spacing: 0px;
+        line-height: normal;
+        position: absolute;
+        text-align: center;
+        width: 460px;
+      }
+
+      .laporan-donasi .rectangle-128 {
+        background-color: var(--romance);
+        border: 1px solid;
+        border-color: var(--romance);
+        border-radius: 14px;
+        height: 32px;
+        left: 0px;
+        position: absolute;
+        top: 0px;
+        width: 116px;
+      }
+    </style>
+  </head>
+  <body style="margin: 0">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Palang Merah Indonesia</a>
+            <span class="navbar-text">
+                Provinsi Jawa Barat - Kota Bandung
+            </span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'informasi' %}">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Informasi Layanan
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Stok Darah</a></li>
+                            <li><a class="dropdown-item" href="#">Jadwal Donor</a></li>
+                            <li><a class="dropdown-item" href="#">Lokasi Donor</a></li>
+                            <li><a class="dropdown-item" href="#">Petugas Medis</a></li>
+                            <li><a class="dropdown-item" href="#">Relawan</a></li>
+                            <li><a class="dropdown-item" href="#">Donasi</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav><br>
+    <input type="hidden" id="anPageName" name="page" value="laporan-donasi" />
+    <div class="container-center-horizontal">
+      <div class="laporan-donasi screen" data-id="1:2">
+        <div class="group-190-JfkSi1" data-id="1:3">
+          <div class="group-151-6oVJYh" data-id="1:4">
+          </div>
+        </div>
+        <div class="rectangle-114-JfkSi1" data-id="1:15"></div>
+        <h1 class="title-JfkSi1 valign-text-middle" data-id="1:16">
+          Laporan Tahunan
+        </h1>
+        <div class="laporan-tahunan-JfkSi1 valign-text-middle" data-id="1:17">
+          Laporan Tahunan
+        </div>
+        <div class="group-77-JfkSi1" data-id="1:18">
+          <img
+            class="png-transparent-bloo-PKp3Ic"
+            data-id="1:19"
+            src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+            anima-src="https://cdn.animaapp.com/projects/675efa628fd7981d2cc029b0/releases/675efc998297d08bd07dc594/img/png-transparent-blood-donation-organ-donation-blood-type-blood-m.png"
+            alt="png-transparent-blood-donation-organ-donation-blood-type-blood-miscellaneous-heart-donation-thumbnail 1"
+          /><img
+            class="pngtree-logo-palang-PKp3Ic"
+            data-id="1:20"
+            src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+            anima-src="https://cdn.animaapp.com/projects/675efa628fd7981d2cc029b0/releases/675efc998297d08bd07dc594/img/pngtree-logo-palang-merah-indonesia-nasional-pmi-png-image-61179@2x.png"
+            alt="pngtree-logo-palang-merah-indonesia-nasional-pmi-png-image_6117962 1"
+          />
+        </div>
+        <img
+          class="line-1-JfkSi1"
+          data-id="1:21"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/675efa628fd7981d2cc029b0/releases/675efc998297d08bd07dc594/img/line-1.svg"
+          alt="Line 1"
+        />
+        <div class="rectangle-213-JfkSi1" data-id="1:22"></div>
+        <div class="rectangle-214-JfkSi1" data-id="1:23"></div>
+        <div class="rectangle-215-JfkSi1" data-id="1:24"></div>
+        <div class="nama-file-JfkSi1 valign-text-middle" data-id="1:25">
+          Nama File
+        </div>
+        <img
+          class="pdf1-1-JfkSi1"
+          data-id="1:26"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/675efa628fd7981d2cc029b0/releases/675efc998297d08bd07dc594/img/pdf1-1.png"
+          alt="pdf1 1"
+        />
+        <p
+          class="laporan-kegiatan-don-JfkSi1 valign-text-middle laporan-kegiatan-don poppins-bold-black-13px"
+          data-id="1:27"
+        >
+          Laporan Kegiatan donor darah kota bandung Tahun 2022
+        </p>
+        <div
+          class="x174-mb-JfkSi1 valign-text-middle poppins-light-black-7px"
+          data-id="1:28"
+        >
+          1.74MB
+        </div>
+        <div
+          class="x12122022-JfkSi1 valign-text-middle poppins-normal-black-13px"
+          data-id="1:29"
+        >
+          12/12/2022
+        </div>
+        <div class="group-107-JfkSi1" data-id="1:30">
+          <div class="rectangle-128" data-id="1:31"></div>
+          <a href="/Laporan_Tahunan_DonorDarah_Kota_Bandung.pdf" style="text-decoration: none;">
+          <div
+            class="download valign-text-middle poppins-bold-red-13px"
+            data-id="1:32"
+          >Download
+          </div>
+        </div>
+        <img
+          class="download-image1-1-JfkSi1 download-image1-1"
+          data-id="1:33"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/675efa628fd7981d2cc029b0/releases/675efc998297d08bd07dc594/img/download-image1-1.png"
+          alt="download image1 1"
+        />
+        <div class="rectangle-216-JfkSi1" data-id="1:34"></div>
+        <div
+          class="x254-mb-JfkSi1 valign-text-middle poppins-light-black-7px"
+          data-id="1:35"
+        >
+          2.54MB
+        </div>
+        <div class="rectangle-217-JfkSi1" data-id="1:36"></div>
+        <div class="rectangle-218-JfkSi1" data-id="1:37"></div>
+        <div
+          class="x712-mb-JfkSi1 valign-text-middle poppins-light-black-7px"
+          data-id="1:38"
+        >
+          7.12MB
+        </div>
+        <div class="group-192-JfkSi1" data-id="1:39">
+          <div class="rectangle-128" data-id="1:40"></div>
+          <div
+            class="download valign-text-middle poppins-bold-red-13px"
+            data-id="1:41"
+          >
+            Download
+          </div>
+          <img
+            class="download-image1-1-ElMYcF download-image1-1"
+            data-id="1:42"
+            src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+            anima-src="https://cdn.animaapp.com/projects/675efa628fd7981d2cc029b0/releases/675efc998297d08bd07dc594/img/download-image1-1.png"
+            alt="download image1 1"
+          />
+        </div>
+        <div
+          class="x12122024-JfkSi1 valign-text-middle poppins-normal-black-13px"
+          data-id="1:43"
+        >
+          12/12/2024
+        </div>
+        <p
+          class="laporan-kegiatan-don-GJoZdp valign-text-middle laporan-kegiatan-don poppins-bold-black-13px"
+          data-id="1:44"
+        >
+          Laporan Kegiatan donor darah kota bandung Tahun 2024
+        </p>
+        <img
+          class="pdf1-3-JfkSi1"
+          data-id="1:45"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/675efa628fd7981d2cc029b0/releases/675efc998297d08bd07dc594/img/pdf1-1.png"
+          alt="pdf1 3"
+        />
+        <div class="group-191-JfkSi1" data-id="1:46">
+          <div class="rectangle-128" data-id="1:47"></div>
+          <div
+            class="download valign-text-middle poppins-bold-red-13px"
+            data-id="1:48"
+          >
+            Download
+          </div>
+          <img
+            class="download-image1-1-D8xJh4 download-image1-1"
+            data-id="1:49"
+            src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+            anima-src="https://cdn.animaapp.com/projects/675efa628fd7981d2cc029b0/releases/675efc998297d08bd07dc594/img/download-image1-1.png"
+            alt="download image1 1"
+          />
+        </div>
+        <div
+          class="x12122023-JfkSi1 valign-text-middle poppins-normal-black-13px"
+          data-id="1:50"
+        >
+          12/12/2023
+        </div>
+        <p
+          class="laporan-kegiatan-don-i8sZuW valign-text-middle laporan-kegiatan-don poppins-bold-black-13px"
+          data-id="1:51"
+        >
+          Laporan Kegiatan donor darah kota bandung Tahun 2022
+        </p>
+        <p
+          class="laporan-kegiatan-don-GPfpY0 valign-text-middle laporan-kegiatan-don poppins-bold-black-13px"
+          data-id="1:52"
+        >
+          Laporan Kegiatan donor darah kota bandung Tahun 2022
+        </p>
+        <p
+          class="laporan-kegiatan-don-Fxtu77 valign-text-middle laporan-kegiatan-don poppins-bold-black-13px"
+          data-id="1:53"
+        >
+          Laporan Kegiatan donor darah kota bandung Tahun 2022
+        </p>
+        <p
+          class="laporan-kegiatan-don-P31zFO valign-text-middle laporan-kegiatan-don poppins-bold-black-13px"
+          data-id="1:54"
+        >
+          Laporan Kegiatan donor darah kota bandung Tahun 2023
+        </p>
+        <img
+          class="pdf1-2-JfkSi1"
+          data-id="1:55"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/675efa628fd7981d2cc029b0/releases/675efc998297d08bd07dc594/img/pdf1-1.png"
+          alt="pdf1 2"
+        />
+      </div>
+    </div>
+    <script src="launchpad-js/launchpad-banner.js" async></script>
+    <script
+      defer
+      src="https://animaapp.s3.amazonaws.com/static/restart-btn.min.js"
+    ></script>
+     <!-- Bootstrap JS (for dropdown functionality) -->
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+ <!-- Custom JavaScript -->
+ <script src="{% static 'dropdown.js' %}"></script>
+  </body>
+</html>

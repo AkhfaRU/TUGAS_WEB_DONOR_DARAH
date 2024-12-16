@@ -1,0 +1,90 @@
+/* Reset untuk memastikan tampilan lebih konsisten */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body dan pengaturan font */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+   padding-top: 80px; /* Sesuaikan dengan tinggi navbar */     
+}
+
+/* Kontainer umum untuk form */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: #3c763d;
+}
+
+/* Gaya untuk form */
+form {
+    display: flex;
+    flex-direction: column; /* Menata elemen secara vertikal */
+    gap: 15px; /* Mengatur jarak antar elemen dalam form */
+    width: 100%;
+}
+
+/* Gaya untuk label */
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+/* Gaya untuk input, select, textarea */
+input, select, textarea {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+/* Gaya untuk tombol */
+button {
+    padding: 10px;
+    font-size: 1rem;
+    color: white;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Gaya untuk form group */
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Mengatur textarea agar bisa lebih panjang */
+textarea {
+    resize: vertical;
+}
+
+/* Gaya untuk halaman sukses */
+.sukses-message {
+    text-align: center;
+    padding: 20px;
+    background-color: #dff0d8;
+    border-radius: 8px;
+    border: 1px solid #d0e9c6;
+    color: #007BFF;
+}
+
+.sukses-message h1 {
+    font-size: 2rem;
+}

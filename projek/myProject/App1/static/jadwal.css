@@ -1,0 +1,124 @@
+/* General Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+.j{
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+main {
+    padding: 20px;
+}
+
+.schedule {
+    text-align: center;
+    padding: 20px;
+}
+
+.schedule h2 {
+    color: #800020;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #333;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.input-tanggal {
+    margin-bottom: 20px;
+}
+
+.input-tanggal input[type="date"] {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Tabel Styling */
+table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Membuat semua teks di tabel rata tengah */
+}
+
+th, td {
+    padding: 15px; /* Ukuran padding agar lebih nyaman */
+    border: 1px solid #ddd;
+    vertical-align: middle; /* Teks di tengah secara vertikal */
+}
+
+th {
+    background-color: #FFB6C1;
+    color: black;
+    text-transform: uppercase; /* Membuat teks header jadi kapital */
+}
+
+td {
+    font-size: 14px;
+    color: #333;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #f9e6e6;
+    cursor: pointer; /* Memberi efek klik */
+}
+
+/* Responsif */
+@media screen and (max-width: 768px) {
+    table {
+        width: 100%; /* Lebar tabel menyesuaikan layar */
+    }
+
+    th, td {
+        padding: 10px; /* Kurangi padding pada layar kecil */
+        font-size: 12px;
+    }
+}
+
+footer {
+    background-color: #0033A0;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+table {
+  width: 90%;
+  margin: 0 auto;
+  border-collapse: collapse;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center; /* Tambahkan ini */
+}
+
+th, td {
+  text-align: center; /* Tambahkan ini */
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #FFB6C1;
+  color: black;
+}
+

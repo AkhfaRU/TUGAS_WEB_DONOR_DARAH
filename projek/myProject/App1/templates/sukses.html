@@ -1,0 +1,25 @@
+<!-- templates/sukses.html -->
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran Sukses</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+    <div class="sukses-message">
+        <p style="color: #7F0000; font-size: 25px; font-size: 50px;"><strong>TERIMA KASIH</strong></p> <br>
+        <p style="font-size: 25px; color: #44D600; border: #000;">Pendaftaran Telah Berhasil <br> </p> <br>
+        <p style="font-size: 20px; color: #000; ">Data Anda saat ini sedang diproses oleh petugas medis. Hasilnya akan
+            diinformasikan melalui WhatsApp dalam waktu maksimal 2x24 jam. Mohon menunggu, dan kami akan segera
+            menghubungi Anda.</p> <br>
+
+        <button type="submit"><a href="{% url 'informasi' %}" style="color: aliceblue; text-decoration: none;">Kembali ke Halaman</a></button>
+    </div>
+</body>
+
+</html>

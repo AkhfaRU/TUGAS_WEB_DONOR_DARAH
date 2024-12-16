@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrasi Donor Darah</title>
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+
+</head>
+<body>
+     <!-- Navbar -->
+     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Palang Merah Indonesia</a>
+            <span class="navbar-text">
+                Provinsi Jawa Barat - Kota Bandung
+            </span>
+        </div>
+    </nav><br><br><br>
+    
+
+    <div class="container "><br>
+        <h1 style="color: brown; text-align: center;">Registrasi Donor Darah</h1><br><br>
+        <form action="{% url 'registrasi' %}" method="POST">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label for="nama">Nama Lengkap:</label>
+                <input type="text" id="nama" name="nama" required placeholder="Nama" value="{{ form.nama.value }}">
+            </div>
+
+            <div class="form-group">
+                <label for="tanggal_lahir">Tanggal Lahir:</label>
+                <input type="date" id="tanggal_lahir" name="tanggal_lahir" required value="{{ form.tanggal_lahir.value }}">
+            </div>
+
+            <div class="form-group">
+                <label for="no_telepon">No. Telepon:</label>
+                <input type="tel" id="no_telepon" name="no_telepon" required value="{{ form.no_telepon.value }}">
+            </div>
+
+            <div class="form-group">
+                <label for="jenis_kelamin">Jenis Kelamin:</label>
+                <select id="jenis_kelamin" name="jenis_kelamin" required>
+                    <option value="Laki-laki" {% if form.jenis_kelamin.value == 'Laki-laki' %}selected{% endif %}>Laki-Laki</option>
+                    <option value="Perempuan" {% if form.jenis_kelamin.value == 'Perempuan' %}selected{% endif %}>Perempuan</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="golongan_darah">Golongan Darah:</label>
+                <select id="golongan_darah" name="golongan_darah" required>
+                    <option value="A" {% if form.golongan_darah.value == 'A' %}selected{% endif %}>A</option>
+                    <option value="B" {% if form.golongan_darah.value == 'B' %}selected{% endif %}>B</option>
+                    <option value="AB" {% if form.golongan_darah.value == 'AB' %}selected{% endif %}>AB</option>
+                    <option value="O" {% if form.golongan_darah.value == 'O' %}selected{% endif %}>O</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="riwayat_penyakit">Riwayat Penyakit:</label>
+                <textarea id="riwayat_penyakit" name="riwayat_penyakit" rows="4" required>{{ form.riwayat_penyakit.value }}</textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="alamat">Alamat:</label>
+                <textarea id="alamat" name="alamat" rows="4" required>{{ form.alamat.value }}</textarea>
+            </div>
+
+            <button type="submit">Daftar</button>
+        </form><br><br><br>
+        <button type="submit"><a href="{% url 'informasi' %}" style="color: aliceblue; text-decoration: none;">Kembali ke Halaman</a></button>
+    </div>
+</body>
+
+</html>

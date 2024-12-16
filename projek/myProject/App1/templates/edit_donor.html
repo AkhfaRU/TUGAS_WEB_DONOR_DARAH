@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDIT</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body><br>
+    <h1 style="text-align: center; color: #7F0000;">Edit Data</h1><br><br>
+    <form method="POST">
+        {% csrf_token %}
+        <label>Nama</label>
+        <input type="text" name="nama" value="{{ donor.nama }}" class="form-control" required>
+        <label>Tanggal Lahir</label>
+        <input type="date" name="tanggal_lahir" value="{{ donor.tanggal_lahir }}" class="form-control" required>
+        <label>No. Telepon</label>
+        <input type="text" name="no_telepon" value="{{ donor.no_telepon }}" class="form-control" required>
+        <label>Jenis Kelamin</label>
+        <select name="jenis_kelamin" class="form-control" required>
+            <option value="Laki-laki" {% if donor.jenis_kelamin == "Laki-laki" %}selected{% endif %}>Laki-laki</option>
+            <option value="Perempuan" {% if donor.jenis_kelamin == "Perempuan" %}selected{% endif %}>Perempuan</option>
+        </select>        
+        <label>Golongan Darah</label>
+        <input type="text" name="golongan_darah" value="{{ donor.golongan_darah }}" class="form-control" required>
+        <label>Riwayat Penyakit</label>
+        <textarea name="riwayat_penyakit" class="form-control">{{ donor.riwayat_penyakit }}</textarea>
+        <label>Alamat</label>
+        <textarea name="alamat" class="form-control">{{ donor.alamat }}</textarea>
+        <button type="submit" class="btn btn-primary mt-3">Update</button>
+    </form>
+
+</body>
+
+</html>

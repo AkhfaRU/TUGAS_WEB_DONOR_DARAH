@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'stok.css' %}">
+    <title>Stok Darah</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Stok Darah</h1>
+    <h2>Ketersediaan Darah Berdasarkan Golongan</h2>
+
+    <div class="chart-container">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <h2>Detail Data Stok Darah</h2>
+    <table class="table-description">
+        <thead>
+            <tr>
+                <th>Golongan Darah</th>
+                <th>Jumlah Stok</th>
+                <th>Keterangan</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>A</td>
+                <td>220</td>
+                <td>Stok darah golongan A saat ini cukup untuk memenuhi kebutuhan biasa.</td>
+            </tr>
+            <tr>
+                <td>B</td>
+                <td>120</td>
+                <td>Stok darah golongan B mulai menipis, perlu penambahan donor.</td>
+            </tr>
+            <tr>
+                <td>AB</td>
+                <td>500</td>
+                <td>Stok darah golongan AB sangat mencukupi, tidak perlu penambahan segera.</td>
+            </tr>
+            <tr>
+                <td>O</td>
+                <td>110</td>
+                <td>Stok darah golongan O kritis, segera cari donor tambahan.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script src="{% static 'darah/js/chart-config.js' %}"></script>
+    <script>
+        const labels = ['A', 'B', 'AB', 'O'];
+const data = {
+    labels: labels,
+    datasets: [{
+        label: 'Stok Darah (kantong)',
+        backgroundColor: [
+            'rgba(255, 99, 132, 0.6)', 
+            'rgba(54, 162, 235, 0.6)', 
+            'rgba(75, 192, 192, 0.6)', 
+            'rgba(255, 206, 86, 0.6)'
+        ],
+        borderColor: [
+            'rgb(255, 99, 132)', 
+            'rgb(54, 162, 235)', 
+            'rgb(75, 192, 192)', 
+            'rgb(255, 206, 86)'
+        ],
+        data: [220, 120, 500, 110],
+        borderWidth: 1
+    }]
+};
+
+const config = {
+    type: 'bar',
+    data: data,
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                display: false,
+                position: 'top',
+            },
+            tooltip: {
+                callbacks: {
+                    label: function(context) {
+                        return ${context.label}: ${context.raw} kantong;
+                    }
+                }
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                title: {
+                    display: true,
+                    text: 'Jumlah Stok (kantong)'
+                }
+            },
+            x: {
+                title: {
+                    display: true,
+                    text: 'Golongan Darah'
+                }
+            }
+        }
+    }
+};
+
+const myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+);
+    </script>
+    
+</body>
+</html>
